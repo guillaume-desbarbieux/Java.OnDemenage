@@ -5,36 +5,29 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner clavier = new Scanner(System.in);
-
-        int totalCartons = 0;
-        int capaciteCamion = 0;
-
-        do {
-            if (totalCartons < 1) {
-                System.out.println("Quel est le nombre total de cartons ?");
-                totalCartons = clavier.nextInt();
-                clavier.nextLine();
-            }
-
-            if (capaciteCamion < 1) {
-                System.out.println("Quel est la capacité de chargement du camion ?");
-                capaciteCamion = clavier.nextInt();
-                clavier.nextLine();
-            }
-        } while (totalCartons < 1 || capaciteCamion < 1);
-
-        clavier.close();
+        int totalCartons = lireEntierPositifClavier("Quel est le nombre total de cartons ?");
+        int capaciteCamion = lireEntierPositifClavier("Quelle est la capacité de chargement du camion ?");
 
         int nbVoyagesPleins = totalCartons / capaciteCamion;
         int cartonsRestants = totalCartons % capaciteCamion;
-        int dernierVoyage = 1;
-        if (cartonsRestants == 0) {
-            dernierVoyage = 0;
-        }
+        int dernierVoyage = (cartonsRestants > 0) ? 1 : 0;
 
-        System.out.println(
-                 ("Un voyage de " + capaciteCamion + " cartons.\n").repeat(nbVoyagesPleins)
-                +("Un dernier voyage de " + cartonsRestants + " cartons.").repeat(dernierVoyage));
+        afficherMessage(("Un voyage de " + capaciteCamion + " cartons.\n").repeat(nbVoyagesPleins));
+        afficherMessage(("Un dernier voyage de " + cartonsRestants + " cartons.").repeat(dernierVoyage));
+    }
+
+    public static int lireEntierPositifClavier(String message){
+        Scanner clavier = new Scanner(System.in);
+        int valeur;
+        do {
+            afficherMessage(message);
+            valeur = clavier.nextInt();
+            clavier.nextLine();
+        } while (valeur < 1);
+        return valeur;
+    }
+
+    public static void afficherMessage(String message){
+        System.out.println(message);
     }
 }
