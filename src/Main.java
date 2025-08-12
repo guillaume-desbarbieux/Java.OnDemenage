@@ -23,14 +23,12 @@ public class Main {
 
         clavier.close();
 
-        int nombreDeVoyagesPleins = totalCartons/capaciteCamion;
+        int nbVoyagesPleins = totalCartons/capaciteCamion;
         int cartonsRestants = totalCartons%capaciteCamion;
 
-        for (int i = 1; i <= nombreDeVoyagesPleins; i++) {
-            System.out.println("Un voyage de " + capaciteCamion + " cartons.");
-        }
+        System.out.println(("Un voyage de " + capaciteCamion + " cartons.\n").repeat(nbVoyagesPleins));
 
-        System.out.println("Nous avons fait " + nombreDeVoyagesPleins + " voyages de " + capaciteCamion + " cartons.");
+        System.out.println("Nous avons fait " + nbVoyagesPleins + " voyages de " + capaciteCamion + " cartons.");
 
         if (cartonsRestants > 0) {
             System.out.println("Faisons un dernier voyage de " + cartonsRestants + " cartons.");
