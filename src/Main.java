@@ -7,31 +7,31 @@ public class Main {
 
         Scanner clavier = new Scanner(System.in);
 
-        int totalCartons = 0;
-        while(totalCartons<1) {
+        int totalCartons;
+        int capaciteCamion;
+
+        do {
             System.out.println("Quel est le nombre total de cartons ?");
             totalCartons = clavier.nextInt();
             clavier.nextLine();
-        }
 
-        int capaciteCamion = 0;
-        while(capaciteCamion<1) {
             System.out.println("Quel est la capacité de chargement du camion ?");
             capaciteCamion = clavier.nextInt();
             clavier.nextLine();
-        }
+
+        } while (totalCartons<1 || capaciteCamion<1);
 
         clavier.close();
 
-        int cartonsRestants = totalCartons;
-        int nombreDeVoyages = 0;
+        int nombreDeVoyagesPleins = totalCartons/capaciteCamion;
+        int cartonsRestants = totalCartons%capaciteCamion;
 
-        while (cartonsRestants >= capaciteCamion) {
-            nombreDeVoyages++;
+        for (int i = 1; i <= nombreDeVoyagesPleins; i++) {
             System.out.println("Un voyage de " + capaciteCamion + " cartons.");
-            cartonsRestants -= capaciteCamion;
         }
-        System.out.println("Nous avons fait " + nombreDeVoyages + " voyages de " + capaciteCamion + " cartons.");
+
+        System.out.println("Nous avons fait " + nombreDeVoyagesPleins + " voyages de " + capaciteCamion + " cartons.");
+
         if (cartonsRestants > 0) {
             System.out.println("Faisons un dernier voyage de " + cartonsRestants + " cartons.");
         }
