@@ -1,9 +1,19 @@
+import com.sun.source.tree.DoWhileLoopTree;
+
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        int totalCartons = 34;
-        int capaciteCamion = 9;
+        Scanner clavier = new Scanner(System.in);
+        System.out.println("Quel est le nombre total de cartons ?");
+        int totalCartons = clavier.nextInt();
+
+        System.out.println("Quel est la capacité de chargement du camion ?");
+        int capaciteCamion = clavier.nextInt();
+
+        clavier.close();
 
         int cartonsRestants = totalCartons;
 
